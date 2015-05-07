@@ -9,6 +9,8 @@ Our task is to use some neural network library
 and train a neural network to recognize numbers
 in images with 10x15 pixels.
 
+The training images are avaliable in the `img/` subdirectory.
+
 Building
 ========
 
