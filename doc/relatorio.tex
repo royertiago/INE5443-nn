@@ -69,6 +69,8 @@ Isto é, existem 10 nós na saída, cada nó correspondendo a um dos possíveis 
 Eu fiz alguns testes com diferentes tamanhos para a camada interna.
 Eu os descrevo na seção \ref{testes}.
 
+Eu utilizei a função logística como função de ativação.
+
 \subsection{Interface com o usuário}
 
 O código implementa, de fato, uma generalização da rede neural descrita acima.
@@ -92,5 +94,57 @@ diz qual é o neurônio da camada de saída que ficou mais ativo
 (Na verdade, o programa escreve o nome do arquivo correspondente àquele neurônio.)
 
 \section{Testes \label{testes}}
+
+Realizei alguns testes alterando a quantidade de neurônios na camada interna.
+Não coloquei as sementes utilizadas porque o \FANN\ não permite que eu escolha
+a semente do gerador de números aleatórios.
+
+Todos os testes foram com um limite de $10^5$ épocas de treinamento.
+
+A tabela \ref{tabela} sumariz os testes feitos exigindo-se erro $10^{-3}$.
+Em todos os casos, foram feitos dez tentativas.
+A coluna ``Convergências'' indica quantas vezes a rede neural estabilizou
+(ficou abaixo do erro exigido).
+A coluna ``Acertos totais'' conta em quantas convergências
+a rede neural acertou a classificação de todas as instâncias.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c c c c}
+        Neurônios & Convergências & Acertos totais \\\hline
+        4 & 4 & 2 \\
+        5 & 5 & 1 \\
+        6 & 4 & 2 \\
+        7 & 8 & 4 \\
+        8 & 10 & 7 \\
+        9 & 10 & 7 \\
+        10 & 10 & 8 \\
+        12 & 10 & 5 \\
+        15 & 10 & 9 \\
+        20 & 10 & 10 \\
+    \end{tabular}
+    \caption{Testes realizados exigindo-se erro médio $10^{-3}$.}
+    \label{tabela}
+\end{table}
+
+Com 4 a 6 neurônios, além de haver uma baixa taxa de convergência
+(há convergència em apenas metade das vezes),
+muito raramente a rede converge para o ``ponto certo'',
+quase sempre havendo discrepâncias entre a resposta da rede neural
+e a resposta correta à questão.
+Isso sugere que precisamos mais neurônios para codificar este problema.
+
+No outro extremo, 15 ou mais neurônios,
+as redes quase sempre convergem para o ponto certo.
+Houve apenas um erro com 15 neurônios, e nenhum com 20.
+Isso diz que 20 neurônios são suficientes para este problema.
+
+No meio termo, 7 a 12 neurônios, a rede sempre converge,
+mas nem sempre para o ponto certo;
+em metade das vezes, a rede acerta em cheio, e,
+na outra metade, deixa escapar alguma coisa.
+Numa situação real, eu preferiria não correr o risco
+de a rede convergir para o ponto errado,
+mesmo que isso aumente o tempo de treinamento.
 
 \end{document}
