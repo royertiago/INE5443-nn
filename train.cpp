@@ -37,9 +37,9 @@ namespace command_line {
 #include <cmath>
 #include <iostream>
 #include <fstream>
+#include <fann.h>
+#include <fann_cpp.h>
 #include "cmdline/args.hpp"
-#include "fann.h"
-#include "fann_cpp.h"
 #include "read_img.h"
 
 namespace command_line {
