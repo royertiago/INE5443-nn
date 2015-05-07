@@ -2,3 +2,4 @@
 *.dep.mk
 .*.swp
 train
+test
