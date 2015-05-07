@@ -23,6 +23,8 @@ Also, I've made use of some of the C++11 features,
 so your compiler should be moderately recent.
 I have tested with `gcc 4.9.2`.
 
+To build `doc/relatorio.pdf`, you will also need LaTeX.
+
 Just type
 
     make
