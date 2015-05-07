@@ -1,4 +1,4 @@
 *.o
 *.dep.mk
 .*.swp
-nn
+train
